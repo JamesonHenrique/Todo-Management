@@ -46,5 +46,10 @@ public class TodoController {
         return new ResponseEntity<>(todoService.completeTodo(id),
                 HttpStatus.OK);
     }
+    @PatchMapping("{id}/in-complete")
+    public ResponseEntity<TodoDto> inCompleteTodo(@PathVariable Long id) {
+        return new ResponseEntity<>(todoService.inCompleteTodo(id),
+                HttpStatus.OK);
+    }
 
 }
