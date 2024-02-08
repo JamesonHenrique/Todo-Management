@@ -5,9 +5,13 @@
 # Tecnologias utilizadas
 
 Java 
+
 Spring Boot 
+
 Maven
+
 Lombok 
+
 Swagger 
 
 ## Pré-requisitos
