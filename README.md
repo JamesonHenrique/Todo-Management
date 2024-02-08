@@ -34,5 +34,5 @@ git clone https://github.com/user/Todo-Management.git
    
 4. Use o Swagger de preferência para testar a API ou o que você preferir
 
-http://localhost:8080/swagger-ui/index.html
+  http://localhost:8080/swagger-ui/index.html
 
