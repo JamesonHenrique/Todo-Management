@@ -32,8 +32,8 @@ public class SpringSecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.builder()
-                .username("root")
-                .password(passwordEncoder().encode("root"))
+                .username("user")
+                .password(passwordEncoder().encode("password"))
                 .roles("USER")
                 .build();
         UserDetails admin = User.builder()
@@ -50,7 +50,14 @@ public class SpringSecurityConfig {
             Exception {
 
         http.csrf((csrf) -> csrf.disable())
+
                 .authorizeHttpRequests((authorize) -> {
+                    authorize.requestMatchers(HttpMethod.POST, "api/**").hasRole("ADMIN");
+                    authorize.requestMatchers(HttpMethod.PUT, "api/**").hasRole("ADMIN");
+                    authorize.requestMatchers(HttpMethod.DELETE, "api/**").hasRole("ADMIN");
+                    authorize.requestMatchers(HttpMethod.GET, "/api/**").hasAnyRole("ADMIN", "USER");
+                    authorize.requestMatchers(HttpMethod.PATCH, "/api/**").hasAnyRole("ADMIN", "USER");
+                    authorize.requestMatchers(HttpMethod.GET, "/api/**").permitAll();
 
                     authorize.anyRequest()
                             .authenticated();
